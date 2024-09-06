@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WineLock</title>
+
+  <link rel="stylesheet" href="https://api.fontshare.com/css?f[]=satoshi@1,300,700&f[]=clash-grotesk@1,600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background-color: #fbfbf0;
+      color: #2f2f2f;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo img {
+      height: 60px;
+      width: auto;
+    }
+
+    header nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    header nav ul li {
+      margin-left: 2rem;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: #2f2f2f;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    header nav ul li a:hover {
+      color: #4A90E2;
+    }
+
+    /* First Block */
+    .hero-section {
+      height: 100vh;
+      background-image: url('balon.jpg'); /* Add your background image here */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: #fff;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    }
+
+    .hero-text {
+      position: relative;
+      text-align: center;
+      max-width: 600px;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-family: 'Clash Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .hero-text a {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: #4A90E2;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: background-color 0.3s;
+    }
+
+    .hero-text a:hover {
+      background-color: #357ABD;
+    }
+
+    /* About Section with Carousel */
+    section#about {
+      padding: 4rem 2rem;
+      background-color: #fff;
+    }
+
+    h2.title-section {
+      text-align: center;
+      font-size: 2.5rem; /* Увеличиваем шрифт */
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    p.subtitle-section {
+      text-align: center; /* Центрируем текст */
+      font-size: 1.5rem; /* Увеличиваем шрифт */
+      margin-bottom: 2rem;
+    }
+
+    .gallery-container {
+      display: flex;
+      justify-content: center; /* Центрируем всю карусель */
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .gallery-wrapper {
+      display: flex;
+      justify-content: center; /* Центрируем первый элемент */
+      transition: transform 0.5s ease;
+      position: relative;
+    }
+
+    .gallery-item {
+      min-width: 300px;
+      margin-right: 20px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, filter 0.3s ease; /* Добавляем анимацию для размытия */
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+    }
+
+    .gallery-item.blur {
+      filter: blur(4px); /* Размытие для неактивных элементов */
+      opacity: 0.6;
+    }
+
+    .gallery-item-text {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .gallery-item-text h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .gallery-item-text p {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .gallery-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: background-color 0.3s;
+      z-index: 10;
+    }
+
+    .gallery-control:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .gallery-control.prev {
+      left: 10px;
+    }
+
+    .gallery-control.next {
+      right: 10px;
+    }
+    
+    /* Секция приемущества*/
+    #features {
+  padding: 4rem 2rem;
+  background-color: #fbfbf0;
+}
+
+.features-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.features-text {
+  flex: 1;
+  max-width: 45%;
+  padding-right: 2rem; /* Отступ справа, чтобы текст не прилегал к изображению */
+}
+
+.features-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.features-text ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.features-text ul li {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.features-image {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Перемещаем изображение к правому краю */
+}
+
+.features-image img {
+  width: 100%;
+  max-width: 600px; /* Устанавливаем максимальную ширину изображения */
+  height: auto;
+  max-height: 700px; /* Ограничиваем высоту изображения 80% высоты окна */
+  object-fit: contain; /* Убедимся, что изображение сохраняет свои пропорции */
+}
+
+ /* Секция тех. характеристики*/
+#technical-specs {
+  padding: 4rem 2rem;
+  background-color: #fbfbf0;
+}
+
+#technical-specs h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.specs-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.specs-left, .specs-right {
+  flex: 1;
+  padding: 1rem;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.spec-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.spec-text p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.spec-number {
+  font-size: 3rem;
+  color: #ddd;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+/* Секция приемущества */
+/* Секция приемущества */
+#business-opportunities {
+  padding: 4rem 2rem;
+  background-color: #fbfbf0;
+  text-align: center;
+}
+
+#business-opportunities h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #2f2f2f;
+}
+
+.opportunities-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Три колонки */
+  gap: 2rem;
+  row-gap: 10px; /* Уменьшает расстояние между строками */
+  align-items: start;
+}
+
+.opportunity-item {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 300px;
+  padding: 10px;
+}
+
+.opportunity-item i {
+  font-size: 2rem; /* Размер иконок */
+  color: #4A90E2; /* Цвет иконок */
+  margin-bottom: 0.5rem; /* Меньший отступ для иконки */
+}
+
+.opportunity-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem; /* Меньший отступ для заголовка */
+  color: #2f2f2f;
+}
+
+.opportunity-item p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 0; /* Убираем отступ сверху */
+}
+
+/* Для второго ряда */
+.opportunity-item:nth-child(4),
+.opportunity-item:nth-child(5) {
+  grid-column: span 1 / span 1;
+}
+
+/* Адаптивность для малых экранов */
+@media (max-width: 1024px) {
+  .opportunities-container {
+    grid-template-columns: repeat(2, 1fr); /* Две колонки на средних экранах */
+  }
+}
+
+@media (max-width: 768px) {
+  .opportunities-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Footer Section */
+/* Footer Section */
+footer {
+  background-color: #fff; /* Белый фон как у хедера */
+  color: #2f2f2f;
+  padding: 2rem 0;
+  border-top: 1px solid #ddd; /* Легкая граница сверху */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Left: Text */
+.footer-text {
+  flex: 1;
+  text-align: left;
+}
+
+.footer-text p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Center: Contacts */
+.footer-contacts {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-contacts p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-contacts i {
+  margin-right: 8px;
+  color: #4A90E2;
+}
+
+/* Right: Social Media Links */
+.footer-socials {
+  flex: 1;
+  text-align: right;
+}
+
+.footer-socials a {
+  margin-left: 1rem;
+  color: #4A90E2;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+  color: #2f2f2f;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-text,
+  .footer-contacts,
+  .footer-socials {
+    margin-bottom: 1rem;
+  }
+
+  .footer-socials {
+    text-align: center;
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="winelock_vertical.png" alt="WineLock Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#order">Order</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1>WineLock: простой способ сохранения вина</h1>
+      <p>Откройте для себя уникальный WineLock, инновационное решение, разработанное для защиты подлинности и свежести ваших лучших вин.</p>
+      <a href="#order">Order Now</a>
+    </div>
+  </section>
+
+  <!-- About Section with Carousel -->
+  <section id="about">
+    <h2 class="title-section">Как работает WineLock?</h2>
+    <p class="subtitle-section">WineLock - это аэрозольный баллон с аргоном, который защищает вино от окисления, создавая невидимый барьер между вином и воздухом.</p>
+
+    <div class="gallery-container">
+      <div class="gallery-wrapper">
+        <div class="gallery-item">
+          <img src="1.jpg" alt="Изображение 1">
+          <div class="gallery-item-text">
+            <h3>Снимите крышку</h3>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="2.jpg" alt="Изображение 2">
+          <div class="gallery-item-text">
+            <h3>Поместите трубку в открытую бутылку вина</h3>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="3.jpg" alt="Изображение 3">
+          <div class="gallery-item-text">
+            <h3>Распылите аргон</h3>
+            <p>Нажмите на баллон и распылите газ в бутылку в течение нескольких секунд.</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="4.jpg" alt="Изображение 4">
+          <div class="gallery-item-text">
+            <h3>Закройте бутылку пробкой</h3>
+            <p>После использования вставьте силиконовую пробку, чтобы герметично закрыть бутылку.</p>
+          </div>
+        </div>
+      </div>
+      <button class="gallery-control prev" onclick="moveGallery(-1)">&#10094;</button>
+      <button class="gallery-control next" onclick="moveGallery(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="features-container">
+      <div class="features-image">
+        <img src="priem.JPG" alt="WineLock и бутылка вина">
+      </div>
+      <div class="features-text">
+        <h2>Преимущества WineLock</h2>
+        <ul>
+          <li>Эффектно предотвращает окисление вина</li>
+          <li>Прост в использовании</li>
+          <li>Компактный и легкий</li>
+          <li>Подходит как для домашнего, так и для профессионального использования</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="technical-specs">
+    <h2>Технические характеристики</h2>
+    <div class="specs-container">
+      <div class="specs-left">
+        <div class="spec-item">
+          <div class="spec-text">
+            <h3>Тип газа</h3>
+            <p>Аргон (чистота 99.99%)</p>
+          </div>
+          <div class="spec-number">01</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-text">
+            <h3>Объём баллона</h3>
+            <p>520 мл</p>
+          </div>
+          <div class="spec-number">02</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-text">
+            <h3>Материал баллона</h3>
+            <p>Сталь</p>
+          </div>
+          <div class="spec-number">03</div>
+        </div>
+      </div>
+      <div class="specs-right">
+        <div class="spec-item">
+          <div class="spec-text">
+            <h3>Цвет баллона</h3>
+            <p>Белый</p>
+          </div>
+          <div class="spec-number">04</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-text">
+            <h3>Средний срок хранения вина</h3>
+            <p>До 21 дня после открытия</p>
+          </div>
+          <div class="spec-number">05</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="business-opportunities">
+    <h2>Возможности для вашего бизнеса</h2>
+    <div class="opportunities-container">
+      <div class="opportunity-item">
+        <i class="fas fa-chart-line"></i>
+        <h3>Увеличение доходов</h3>
+        <p>Возможность увеличить выбор вин по бокалам в вашей карте бара, что способствует привлечению новых клиентов.</p>
+      </div>
+      <div class="opportunity-item">
+        <i class="fas fa-users"></i>
+        <h3>Улучшение клиентского опыта</h3>
+        <p>Обеспечение всегда свежего и качественного вина повышает удовлетворенность клиентов и увеличивает вероятность повторных посещений.</p>
+      </div>
+      <div class="opportunity-item">
+        <i class="fas fa-money-bill-wave"></i>
+        <h3>Снижение финансовых потерь</h3>
+        <p>Благодаря технологии WineLock сокращается количество вина, которое нужно списывать из-за потери качества. Это позволяет снизить финансовые потери.</p>
+      </div>
+      <div class="opportunity-item">
+        <i class="fas fa-boxes"></i>
+        <h3>Оптимизация запасов</h3>
+        <p>WineLock позволяет заведениям эффективнее управлять запасами, снижая затраты на закупку вина. Можно открывать несколько бутылок одновременно.</p>
+      </div>
+      <div class="opportunity-item">
+        <i class="fas fa-coins"></i>
+        <h3>Улучшение рентабельности</h3>
+        <p>Уменьшение списаний и сохранение качества вина помогают улучшить рентабельность, увеличивая прибыль и уменьшая убытки.</p>
+      </div>
+    </div>
+  </section>
+  
+<!-- Footer Section -->
+<footer>
+  <div class="footer-container">
+    <!-- Left: Text -->
+    <div class="footer-text">
+      <p>WineLock — сохраняйте качество вашего вина в течение долгого времени. Наслаждайтесь каждым бокалом!</p>
+    </div>
+
+    <!-- Center: Contacts -->
+    <div class="footer-contacts">
+      <p><i class="fas fa-phone-alt"></i> +1 (234) 567-890</p>
+      <p><i class="fas fa-envelope"></i> support@winelock.com</p>
+    </div>
+
+    <!-- Right: Social Media Links -->
+    <div class="footer-socials">
+      <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+    const galleryWrapper = document.querySelector('.gallery-wrapper');
+    let galleryIndex = 0;
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const containerWidth = document.querySelector('.gallery-container').offsetWidth;
+
+    function moveGallery(step) {
+      galleryIndex = (galleryIndex + step + galleryItems.length) % galleryItems.length;
+      const itemWidth = galleryItems[0].clientWidth + 20; // Учитываем отступ между элементами
+      const offset = -galleryIndex * itemWidth + (containerWidth - itemWidth) / 2; // Центрируем первый элемент
+      galleryWrapper.style.transform = `translateX(${offset}px)`;
+
+      galleryItems.forEach((item, index) => {
+        if (index === galleryIndex) {
+          item.classList.remove('blur'); // Убираем размытие для активного элемента
+        } else {
+          item.classList.add('blur'); // Добавляем размытие для остальных
+        }
+      });
+    }
+
+    // Автоматическая прокрутка
+    setInterval(() => {
+      moveGallery(1);
+    }, 5000);
+
+    // Инициализация позиции для первого изображения
+    window.addEventListener('load', () => {
+      moveGallery(0);
+    });
+  </script>
+</body>
+
+</html>
