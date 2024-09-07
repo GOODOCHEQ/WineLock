@@ -10,472 +10,581 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Satoshi', sans-serif;
-      background-color: #fbfbf0;
-      color: #2f2f2f;
-    }
-
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    header .logo img {
-      height: 60px;
-      width: auto;
-    }
-
-    header nav ul {
-      display: flex;
-      list-style: none;
-    }
-
-    header nav ul li {
-      margin-left: 2rem;
-    }
-
-    header nav ul li a {
-      text-decoration: none;
-      color: #2f2f2f;
-      font-weight: 600;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    header nav ul li a:hover {
-      color: #4A90E2;
-    }
-
-    /* First Block */
-    .hero-section {
-      height: 100vh;
-      background-image: url('balon.jpg'); /* Add your background image here */
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      color: #fff;
-    }
-
-    .hero-section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-    }
-
-    .hero-text {
-      position: relative;
-      text-align: center;
-      max-width: 600px;
-      z-index: 1;
-    }
-
-    .hero-text h1 {
-      font-family: 'Clash Grotesk', sans-serif;
-      font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .hero-text p {
-      font-size: 1.2rem;
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-
-    .hero-text a {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background-color: #4A90E2;
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: background-color 0.3s;
-    }
-
-    .hero-text a:hover {
-      background-color: #357ABD;
-    }
-
-    /* About Section with Carousel */
-    section#about {
-      padding: 4rem 2rem;
-      background-color: #fff;
-    }
-
-    h2.title-section {
-      text-align: center;
-      font-size: 2.5rem; /* Увеличиваем шрифт */
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    p.subtitle-section {
-      text-align: center; /* Центрируем текст */
-      font-size: 1.5rem; /* Увеличиваем шрифт */
-      margin-bottom: 2rem;
-    }
-
-    .gallery-container {
-      display: flex;
-      justify-content: center; /* Центрируем всю карусель */
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-
-    .gallery-wrapper {
-      display: flex;
-      justify-content: center; /* Центрируем первый элемент */
-      transition: transform 0.5s ease;
-      position: relative;
-    }
-
-    .gallery-item {
-      min-width: 300px;
-      margin-right: 20px;
-      position: relative;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, filter 0.3s ease; /* Добавляем анимацию для размытия */
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-    }
-
-    .gallery-item.blur {
-      filter: blur(4px); /* Размытие для неактивных элементов */
-      opacity: 0.6;
-    }
-
-    .gallery-item-text {
-      background-color: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .gallery-item-text h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .gallery-item-text p {
-      font-size: 1rem;
-      font-weight: 300;
-    }
-
-    .gallery-control {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      font-size: 1.5rem;
-      transition: background-color 0.3s;
-      z-index: 10;
-    }
-
-    .gallery-control:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    .gallery-control.prev {
-      left: 10px;
-    }
-
-    .gallery-control.next {
-      right: 10px;
-    }
     
-    /* Секция приемущества*/
-    #features {
-  padding: 4rem 2rem;
-  background-color: #fbfbf0;
+/* Define Gotham Pro font family */
+@font-face {
+    font-family: 'GothamPro';
+    src: url('./font/gothampro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.features-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+@font-face {
+    font-family: 'GothamPro';
+    src: url('./font/gothampro_bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
 
-.features-text {
-  flex: 1;
-  max-width: 45%;
-  padding-right: 2rem; /* Отступ справа, чтобы текст не прилегал к изображению */
+@font-face {
+    font-family: 'GothamPro';
+    src: url('./font/gothampro_italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
 }
 
-.features-text h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+@font-face {
+    font-family: 'GothamPro';
+    src: url('./font/gothampro_bolditalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
 }
 
-.features-text ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+/* Global body settings */
+body {
+    font-family: 'GothamPro', sans-serif;
+    background-color: #fbfbf0;
+    color: #2f2f2f;
 }
 
-.features-text ul li {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem; 
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.features-image {
-  flex: 1;
-  display: flex;
-  justify-content: center; /* Перемещаем изображение к правому краю */
+header .logo img {
+    height: 40px;
+    width: auto;
 }
 
-.features-image img {
-  width: 100%;
-  max-width: 600px; /* Устанавливаем максимальную ширину изображения */
-  height: auto;
-  max-height: 700px; /* Ограничиваем высоту изображения 80% высоты окна */
-  object-fit: contain; /* Убедимся, что изображение сохраняет свои пропорции */
+header nav ul {
+    display: flex;
+    list-style: none;
 }
 
- /* Секция тех. характеристики*/
+header nav ul li {
+    margin-left: 2rem;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #2f2f2f;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #4A90E2;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background-image: url('balon.jpg'); /* Add your background image here */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fff;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}
+
+.hero-text {
+    position: relative;
+    text-align: center;
+    max-width: 600px;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-family: 'GothamPro', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+}
+
+.hero-text a {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #4A90E2;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+
+.hero-text a:hover {
+    background-color: #357ABD;
+}
+
+/* About Section with Carousel */
+section#about {
+    padding: 4rem 2rem;
+    background-color: #7ba7bc;
+    color: #fff;
+}
+
+h2.title-section {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+p.subtitle-section {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+.gallery-wrapper {
+    display: flex;
+    justify-content: center;
+    transition: transform 0.5s ease;
+    position: relative;
+}
+
+.gallery-item {
+    min-width: 300px;
+    margin-right: 20px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+}
+
+.gallery-item.blur {
+    filter: blur(4px);
+    opacity: 0.6;
+}
+
+.gallery-item-text {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+.gallery-item-text h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.gallery-item-text p {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.gallery-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+.gallery-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.gallery-control.prev {
+    left: 10px;
+}
+
+.gallery-control.next {
+    right: 10px;
+}
+
+/* Features Section */
+#features {
+    padding: 5rem 2rem;
+    background-color: #7ba7bc;
+    width: 100%;
+}
+
+.features-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.feature-item {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-item h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.feature-item p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.features-grid::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.features-grid::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #ccc;
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .features-grid::before,
+    .features-grid::after {
+        display: none;
+    }
+}
+
+/* Technical Specs Section */
 #technical-specs {
-  padding: 4rem 2rem;
-  background-color: #fbfbf0;
+    padding: 4rem 2rem;
+    background-color: #ffffff;
 }
 
 #technical-specs h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .specs-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .specs-left, .specs-right {
-  flex: 1;
-  padding: 1rem;
+    flex: 1;
+    padding: 1rem;
 }
 
 .spec-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
 }
 
 .spec-text h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .spec-text p {
-  font-size: 1.1rem;
-  color: #555;
+    font-size: 1.1rem;
+    color: #555;
 }
 
 .spec-number {
-  font-size: 3rem;
-  color: #ddd;
-  font-weight: bold;
-  margin-left: 1rem;
+    font-size: 3rem;
+    color: #ddd;
+    font-weight: bold;
+    margin-left: 1rem;
 }
 
-/* Секция приемущества */
-/* Секция приемущества */
+/* Business Opportunities Section */
 #business-opportunities {
-  padding: 4rem 2rem;
-  background-color: #fbfbf0;
-  text-align: center;
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+    text-align: center;
 }
 
 #business-opportunities h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #2f2f2f;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #2f2f2f;
 }
 
 .opportunities-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Три колонки */
-  gap: 2rem;
-  row-gap: 10px; /* Уменьшает расстояние между строками */
-  align-items: start;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    row-gap: 10px;
+    align-items: start;
 }
 
 .opportunity-item {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  min-height: 300px;
-  padding: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 200px;
+    padding: 10px;
 }
 
 .opportunity-item i {
-  font-size: 2rem; /* Размер иконок */
-  color: #4A90E2; /* Цвет иконок */
-  margin-bottom: 0.5rem; /* Меньший отступ для иконки */
+    font-size: 2rem;
+    color: #4A90E2;
+    margin-bottom: 0.5rem;
 }
 
 .opportunity-item h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem; /* Меньший отступ для заголовка */
-  color: #2f2f2f;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    color: #2f2f2f;
 }
 
 .opportunity-item p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-top: 0; /* Убираем отступ сверху */
+    font-size: 1rem;
+    color: #555;
+    margin-top: 0;
 }
 
-/* Для второго ряда */
-.opportunity-item:nth-child(4),
-.opportunity-item:nth-child(5) {
-  grid-column: span 1 / span 1;
-}
-
-/* Адаптивность для малых экранов */
 @media (max-width: 1024px) {
-  .opportunities-container {
-    grid-template-columns: repeat(2, 1fr); /* Две колонки на средних экранах */
-  }
+    .opportunities-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-  .opportunities-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
+    .opportunities-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
-/* Footer Section */
-/* Footer Section */
-footer {
-  background-color: #fff; /* Белый фон как у хедера */
-  color: #2f2f2f;
-  padding: 2rem 0;
-  border-top: 1px solid #ddd; /* Легкая граница сверху */
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* Left: Text */
-.footer-text {
-  flex: 1;
-  text-align: left;
-}
-
-.footer-text p {
-  font-size: 1rem;
-  color: #555;
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* Center: Contacts */
-.footer-contacts {
-  flex: 1;
-  text-align: center;
-}
-
-.footer-contacts p {
-  font-size: 1rem;
-  color: #555;
-  margin: 0.5rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-contacts i {
-  margin-right: 8px;
-  color: #4A90E2;
-}
-
-/* Right: Social Media Links */
-.footer-socials {
-  flex: 1;
-  text-align: right;
-}
-
-.footer-socials a {
-  margin-left: 1rem;
-  color: #4A90E2;
-  font-size: 1.5rem;
-  transition: color 0.3s;
-}
-
-.footer-socials a:hover {
-  color: #2f2f2f;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
+/* Contacts Section */
+#contacts {
     text-align: center;
-  }
+    padding: 2rem 0;
+    background-color: #fff;
+    margin-top: -50px;
+}
 
-  .footer-text,
-  .footer-contacts,
-  .footer-socials {
+.contacts-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo-contacts {
+    height: 100px;
+    margin-bottom: 2rem;
+}
+
+#contacts h2 {
+    font-size: 2rem;
+    color: #9cb4c4;
     margin-bottom: 1rem;
-  }
-
-  .footer-socials {
-    text-align: center;
-  }
 }
 
+#contacts p {
+    font-size: 1.2rem;
+    color: #9cb4c4;
+    margin: 0.5rem 0;
+}
+
+.social-icons {
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: #9cb4c4;
+    font-size: 2rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #4A90E2;
+}
+
+/* Стили для модального окна */
+/* Стили для модального окна */
+.modal {
+    display: none; /* По умолчанию скрыто */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Добавим тени */
+    transition: transform 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #444;
+    text-align: left; /* Выравнивание текста слева */
+    margin-left: 5px; /* Небольшой отступ слева для лучшего выравнивания */
+}
+
+.modal-content input, 
+.modal-content textarea {
+    width: calc(100% - 20px); /* Уменьшение ширины полей для равных отступов */
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Закруглим углы полей ввода */
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+    outline: none;
+    box-sizing: border-box; /* Учитываем padding и border */
+}
+
+.modal-content input:focus, 
+.modal-content textarea:focus {
+    border-color: #4A90E2; /* Цвет рамки при фокусе */
+}
+
+.modal-content button {
+    padding: 12px 25px;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 50px; /* Закругленная кнопка */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #357ABD;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #444;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #f00;
+}
+
+.contact-info {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
 
   </style>
 </head>
@@ -483,14 +592,14 @@ footer {
 <body>
   <header>
     <div class="logo">
-      <img src="winelock_vertical.png" alt="WineLock Logo">
+      <img src="winelock_rotated_90_degrees.jpg" alt="WineLock Logo">
     </div>
     <nav>
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#order">Order</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">Как это работает</a></li>
+        <li><a href="#technical-specs">Характеристики</a></li>
+        <li><a href="#business-opportunities">Возможности</a></li>
+        <li><a href="#contacts">Контакты</a></li>
       </ul>
     </nav>
   </header>
@@ -499,15 +608,41 @@ footer {
     <div class="hero-text">
       <h1>WineLock: простой способ сохранения вина</h1>
       <p>Откройте для себя уникальный WineLock, инновационное решение, разработанное для защиты подлинности и свежести ваших лучших вин.</p>
-      <a href="#order">Order Now</a>
+      <a href="#" id="order-btn">Order Now</a>
     </div>
   </section>
+  
+  <!-- Модальное окно -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-modal">&times;</span>
+      <h2>Оставьте свои данные для обратной связи</h2>
+      <form>
+        <label for="name">Имя</label>
+        <input type="text" id="name" placeholder="Введите ваше имя" required>
+  
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Введите ваш email" required>
+  
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" placeholder="Введите ваш телефон" required>
+  
+        <label for="message">Сообщение (необязательно)</label>
+        <textarea id="message" placeholder="Введите ваше сообщение (опционально)" rows="4"></textarea>
+  
+        <button type="submit">Отправить</button>
+      </form>
+      <div class="contact-info">
+        <p>Или свяжитесь с нами напрямую:</p>
+        <p>Телефон: +7(937) 753-39-38</p>
+        <p>Email: winelock938@gmail.com</p>
+      </div>
+    </div>
+  </div>
 
-  <!-- About Section with Carousel -->
   <section id="about">
     <h2 class="title-section">Как работает WineLock?</h2>
     <p class="subtitle-section">WineLock - это аэрозольный баллон с аргоном, который защищает вино от окисления, создавая невидимый барьер между вином и воздухом.</p>
-
     <div class="gallery-container">
       <div class="gallery-wrapper">
         <div class="gallery-item">
@@ -539,23 +674,6 @@ footer {
       </div>
       <button class="gallery-control prev" onclick="moveGallery(-1)">&#10094;</button>
       <button class="gallery-control next" onclick="moveGallery(1)">&#10095;</button>
-    </div>
-  </section>
-
-  <section id="features">
-    <div class="features-container">
-      <div class="features-image">
-        <img src="priem.JPG" alt="WineLock и бутылка вина">
-      </div>
-      <div class="features-text">
-        <h2>Преимущества WineLock</h2>
-        <ul>
-          <li>Эффектно предотвращает окисление вина</li>
-          <li>Прост в использовании</li>
-          <li>Компактный и легкий</li>
-          <li>Подходит как для домашнего, так и для профессионального использования</li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -603,6 +721,28 @@ footer {
       </div>
     </div>
   </section>
+
+  <section id="features">
+    <h2 class="features-title">Преимущества</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <h3>Предотвращение окисления вина</h3>
+        <p>Надежно защищает вино, сохраняя его вкус и аромат.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Лёгкость в использовании</h3>
+        <p>Простое применение для всех, от любителей до профессионалов.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Компактность и удобство</h3>
+        <p>Малый размер и лёгкий вес позволяют легко носить с собой.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Подходит для всех</h3>
+        <p>Идеален для домашнего и профессионального использования.</p>
+      </div>
+    </div>
+  </section>
   
   <section id="business-opportunities">
     <h2>Возможности для вашего бизнеса</h2>
@@ -632,32 +772,26 @@ footer {
         <h3>Улучшение рентабельности</h3>
         <p>Уменьшение списаний и сохранение качества вина помогают улучшить рентабельность, увеличивая прибыль и уменьшая убытки.</p>
       </div>
+      <div class="opportunity-item">
+        <i class="fas fa-leaf"></i>
+        <h3>Улучшение экологической ответственности</h3>
+        <p>WineLock снижает количество отходов и поддерживает устойчивый подход к бизнесу, сохраняя природу.</p>
+      </div>
     </div>
-  </section>
-  
-<!-- Footer Section -->
-<footer>
-  <div class="footer-container">
-    <!-- Left: Text -->
-    <div class="footer-text">
-      <p>WineLock — сохраняйте качество вашего вина в течение долгого времени. Наслаждайтесь каждым бокалом!</p>
-    </div>
+</section>
 
-    <!-- Center: Contacts -->
-    <div class="footer-contacts">
-      <p><i class="fas fa-phone-alt"></i> +1 (234) 567-890</p>
-      <p><i class="fas fa-envelope"></i> support@winelock.com</p>
-    </div>
-
-    <!-- Right: Social Media Links -->
-    <div class="footer-socials">
-      <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<section id="contacts">
+  <div class="contacts-container">
+    <img src="winelock_vertical.png" alt="WineLock Logo" class="logo-contacts">
+    <h2>Наши контакты</h2>
+    <p>+7(937) 753-39-38</p>
+    <p>winelock938@gmail.com</p>
+    <div class="social-icons">
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
     </div>
   </div>
-</footer>
-
+</section>
 
   <script>
     const galleryWrapper = document.querySelector('.gallery-wrapper');
@@ -683,11 +817,33 @@ footer {
     // Автоматическая прокрутка
     setInterval(() => {
       moveGallery(1);
-    }, 5000);
+    }, 7000);
 
     // Инициализация позиции для первого изображения
     window.addEventListener('load', () => {
       moveGallery(0);
+    });
+
+    const orderBtn = document.getElementById('order-btn');
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('close-modal');
+
+    // Открытие модального окна
+    orderBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+
+    // Закрытие модального окна
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Закрытие модального окна при клике вне формы
+    window.addEventListener('click', (e) => {
+      if (e.target == modal) {
+        modal.style.display = 'none';
+      }
     });
   </script>
 </body>
