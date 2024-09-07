@@ -590,10 +590,10 @@ p.subtitle-section {
   </style>
 </head>
 
-<body>
+<body id="top">
   <header>
     <div class="logo">
-      <img src="winelock_rotated_90_degrees.jpg" alt="WineLock Logo">
+      <a href="#top"><img src="winelock_rotated_90_degrees.jpg" alt="WineLock Logo"></a>
     </div>
     <nav>
       <ul>
@@ -846,6 +846,16 @@ p.subtitle-section {
         modal.style.display = 'none';
       }
     });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
   </script>
 </body>
 
