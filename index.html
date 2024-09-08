@@ -40,11 +40,24 @@
     font-style: italic;
 }
 
+
 /* Global body settings */
 body {
     font-family: 'GothamPro', sans-serif;
     background-color: #fbfbf0;
     color: #2f2f2f;
+}
+
+/* Основные стили для предотвращения горизонтальной прокрутки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Запрещаем горизонтальную прокрутку */
 }
 
 /* Header */
@@ -58,6 +71,7 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    top: 0; 
 }
 
 header .logo img {
@@ -85,6 +99,7 @@ header nav ul li a {
 header nav ul li a:hover {
     color: #4A90E2;
 }
+
 
 /* Hero Section */
 .hero-section {
@@ -143,6 +158,7 @@ header nav ul li a:hover {
 .hero-text a:hover {
     background-color: #357ABD;
 }
+
 
 /* About Section with Carousel */
 section#about {
@@ -249,6 +265,7 @@ p.subtitle-section {
     right: 10px;
 }
 
+
 /* Features Section */
 #features {
     padding: 5rem 2rem;
@@ -329,6 +346,7 @@ p.subtitle-section {
     }
 }
 
+
 /* Technical Specs Section */
 #technical-specs {
     padding: 4rem 2rem;
@@ -377,6 +395,7 @@ p.subtitle-section {
     font-weight: bold;
     margin-left: 1rem;
 }
+
 
 /* Business Opportunities Section */
 #business-opportunities {
@@ -439,6 +458,7 @@ p.subtitle-section {
     }
 }
 
+
 /* Contacts Section */
 #contacts {
     text-align: center;
@@ -484,10 +504,10 @@ p.subtitle-section {
     color: #4A90E2;
 }
 
-/* Стили для модального окна */
+
 /* Стили для модального окна */
 .modal {
-    display: none; /* По умолчанию скрыто */
+    display: none; 
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -506,7 +526,7 @@ p.subtitle-section {
     width: 80%;
     max-width: 600px;
     text-align: center;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Добавим тени */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); 
     transition: transform 0.3s ease-in-out;
     box-sizing: border-box;
 }
@@ -523,28 +543,28 @@ p.subtitle-section {
     margin-bottom: 5px;
     font-size: 18px;
     color: #444;
-    text-align: left; /* Выравнивание текста слева */
-    margin-left: 5px; /* Небольшой отступ слева для лучшего выравнивания */
+    text-align: left; 
+    margin-left: 5px; 
 }
 
 .modal-content input, 
 .modal-content textarea {
-    width: calc(100% - 20px); /* Уменьшение ширины полей для равных отступов */
+    width: calc(100% - 20px); 
     padding: 12px 15px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 10px; /* Закруглим углы полей ввода */
+    border-radius: 10px; 
     font-size: 16px;
     background-color: #f9f9f9;
     transition: border-color 0.3s ease;
     outline: none;
-    box-sizing: border-box; /* Учитываем padding и border */
+    box-sizing: border-box; 
     resize: none; 
 }
 
 .modal-content input:focus, 
 .modal-content textarea:focus {
-    border-color: #4A90E2; /* Цвет рамки при фокусе */
+    border-color: #4A90E2; 
 }
 
 .modal-content button {
@@ -552,7 +572,7 @@ p.subtitle-section {
     background-color: #4A90E2;
     color: white;
     border: none;
-    border-radius: 50px; /* Закругленная кнопка */
+    border-radius: 50px; 
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
@@ -587,6 +607,262 @@ p.subtitle-section {
     margin: 5px 0;
 }
 
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    /* Заголовок и текст в блоке "Как работает WineLock?" */
+    .title-section {
+        font-size: 2rem !important; /* Уменьшенный размер заголовка для мобильных */
+    }
+
+    .subtitle-section {
+        font-size: 1rem !important; /* Уменьшенный размер текста для мобильных */
+    }
+
+    /* Стили для хедера */
+    header {
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem 1rem;
+    }
+
+    body {
+        margin-top: 70px;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .logo {
+        text-align: center;
+        flex: 1;
+        padding: 0;
+    }
+
+    /* Бургер-меню */
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        z-index: 1001;
+        cursor: pointer;
+    }
+
+    .burger-menu div {
+        width: 20px;
+        height: 2px;
+        background-color: #2f2f2f;
+        margin: 4px;
+    }
+
+    /* Скрываем меню по умолчанию */
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        left: 0;
+        background-color: white;
+        padding: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    /* Показываем меню при открытии */
+    header nav ul.show {
+        display: flex;
+        top: 50px;
+    }
+
+    header nav ul li {
+        text-align: center;
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    header nav ul li a {
+        display: block;
+        padding: 5px 0;
+        text-decoration: none;
+        font-weight: bold;
+        color: #2f2f2f;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    header nav ul li a:hover {
+        color: #4A90E2;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        padding: 0 1.5rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .hero-text a {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Галерея (карусель) для мобильных устройств */
+    .gallery-container {
+        overflow: hidden;
+        padding: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .gallery-wrapper {
+        display: flex;
+        justify-content: center;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    }
+
+    .gallery-item {
+        flex: 0 0 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        max-width: 100%;
+    }
+
+    .gallery-item img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover; /* Это свойство поможет избежать растяжения */
+    }
+
+    /* Размер текста в карусели */
+    .gallery-item-text {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для улучшения читаемости текста */
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-size: 1rem; /* Размер шрифта для текста в блоках карусели */
+    }
+
+    .gallery-item-text h3 {
+        margin-bottom: 5px;
+        font-size: 1.2rem; /* Изменяем размер заголовков в карусели */
+        font-weight: bold;
+    }
+
+    .gallery-item-text p {
+        font-size: 1rem;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .gallery-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+        transition: background-color 0.3s;
+        z-index: 10;
+    }
+
+    .gallery-control.prev {
+        left: 10px;
+    }
+
+    .gallery-control.next {
+        right: 10px;
+    }
+
+    .gallery-control:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .gallery-item.blur {
+        filter: none;
+        opacity: 1;
+    }
+
+    /* Убираем лишнее смещение, если оно есть */
+    .gallery-wrapper {
+        transform: none;
+    }
+
+    /* Секции с заголовками */
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Текст в параграфах */
+    p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Текст в галереях и карточках */
+    .gallery-item-text h3,
+    .feature-item h3,
+    .spec-text h3,
+    .opportunity-item h3 {
+        font-size: 1rem;
+    }
+
+    .gallery-item-text p,
+    .feature-item p,
+    .spec-text p,
+    .opportunity-item p {
+        font-size: 1rem;
+    }
+
+    /* Модальное окно */
+    .modal-content h2 {
+        font-size: 2rem;
+    }
+
+    .modal-content label,
+    .modal-content input,
+    .modal-content textarea {
+        font-size: 1rem;
+    }
+
+    .modal-content button {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+
   </style>
 </head>
 
@@ -594,6 +870,11 @@ p.subtitle-section {
   <header>
     <div class="logo">
       <a href="#top"><img src="winelock_rotated_90_degrees.jpg" alt="WineLock Logo"></a>
+    </div>
+    <div class="burger-menu" id="burger-menu">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
     <nav>
       <ul>
@@ -855,6 +1136,18 @@ p.subtitle-section {
             behavior: 'smooth'
         });
     });
+});
+
+const burgerMenu = document.getElementById('burger-menu');
+const nav = document.querySelector('header nav ul');
+
+// Логика для показа меню
+burgerMenu.addEventListener('click', () => {
+    if (nav.classList.contains('show')) {
+        nav.classList.remove('show'); // Если меню открыто, скрываем
+    } else {
+        nav.classList.add('show'); // Показываем меню
+    }
 });
   </script>
 </body>
