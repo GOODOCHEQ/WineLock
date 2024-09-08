@@ -609,6 +609,7 @@ p.subtitle-section {
 
 
 /* Мобильные стили */
+/* Мобильные стили */
 @media (max-width: 768px) {
     /* Заголовок и текст в блоке "Как работает WineLock?" */
     .title-section {
@@ -830,6 +831,45 @@ p.subtitle-section {
         margin-bottom: 1.5rem;
     }
 
+    /* Блок "Технические характеристики" */
+    #technical-specs h2 {
+        font-size: 2rem !important; /* Уменьшенный размер заголовка */
+    }
+
+    .spec-text h3 {
+        font-size: 1rem !important; /* Уменьшенный размер заголовков */
+    }
+
+    .spec-text p {
+        font-size: 0.9rem !important; /* Уменьшенный размер текста */
+    }
+
+    /* Блок "Преимущества" */
+    .features-title {
+        font-size: 2rem !important; /* Уменьшенный размер заголовка */
+    }
+
+    .feature-item h3 {
+        font-size: 1rem !important; /* Уменьшенный размер заголовков */
+    }
+
+    .feature-item p {
+        font-size: 0.9rem !important; /* Уменьшенный размер текста */
+    }
+
+    /* Блок "Возможности для вашего бизнеса" */
+    #business-opportunities h2 {
+        font-size: 2rem !important; /* Уменьшенный размер заголовка */
+    }
+
+    .opportunity-item h3 {
+        font-size: 1rem !important; /* Уменьшенный размер заголовков */
+    }
+
+    .opportunity-item p {
+        font-size: 0.9rem !important; /* Уменьшенный размер текста */
+    }
+
     /* Текст в галереях и карточках */
     .gallery-item-text h3,
     .feature-item h3,
@@ -860,7 +900,16 @@ p.subtitle-section {
         font-size: 0.9rem;
         padding: 0.75rem 1.5rem;
     }
+
+    /* Обновление для блоков "Преимущества" и "Возможности для вашего бизнеса" */
+    .features-grid,
+    .opportunities-container {
+        grid-template-columns: repeat(2, 1fr); /* Разделение контента на 2 столбца */
+        grid-template-rows: repeat(auto-fit, 1fr);
+        gap: 10px;
+    }
 }
+
 
 
   </style>
