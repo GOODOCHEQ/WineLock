@@ -730,48 +730,49 @@ p.subtitle-section {
 
     /* Галерея для мобильных устройств */
     .gallery-container {
-        overflow: hidden;
-        padding: 0 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Убираем лишние отступы */
+  }
 
-    .gallery-wrapper {
-        display: flex;
-        justify-content: center;
-        transition: transform 0.5s ease-in-out;
-        width: 100%;
-    }
+  .gallery-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%; /* Ширина на весь экран */
+    justify-content: center;
+    transform: translateX(-2%); /* Смещаем изображения немного влево */
+  }
 
-    .gallery-item {
-        flex: 0 0 100%;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        position: relative;
-        max-width: 100%;
-    }
+  .gallery-item {
+    flex: 0 0 100%; /* Каждый элемент занимает 100% ширины */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
 
-    .gallery-item img {
-        max-width: 100%;
-        height: auto;
-        object-fit: cover; /* Это свойство поможет избежать растяжения */
-    }
+  .gallery-item img {
+    max-width: 100%; /* Устанавливаем ширину для изображения */
+    height: auto;
+    object-fit: contain; /* Отключаем растягивание изображений */
+  }
 
-    .gallery-item-text {
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-        font-size: 1rem;
-    }
+  .gallery-item-text {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для текста */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.8rem; /* Уменьшаем размер шрифта для мобильных устройств */
+    padding: 10px 20px; /* Добавляем отступы, чтобы текст не обрезался */
+    padding-right: 40px; /* Дополнительный отступ справа */
+  }
 
     /* Секции с заголовками */
     section h2 {
