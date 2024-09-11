@@ -1002,6 +1002,58 @@ header, footer, section {
     color: #7ba7bc; /* Белый текст по умолчанию для всех секций */
 }
 
+@media (max-width: 768px) {
+  /* Блок "Технические характеристики" */
+  .spec-item {
+      flex-direction: column; /* Элементы выстраиваются в колонку */
+      text-align: center; /* Центрируем текст */
+      padding-bottom: 1rem; /* Добавляем отступы снизу */
+      flex-wrap: wrap; /* Перенос элементов на новую строку при необходимости */
+  }
+
+  .spec-text h3, .spec-text p {
+      font-size: 1rem; /* Уменьшаем размер текста */
+      width: 100%; /* Даем тексту больше пространства */
+      text-align: center; /* Центрируем текст */
+      margin-bottom: 0.5rem; /* Добавляем отступ между заголовком и текстом */
+  }
+
+  .spec-number {
+      font-size: 2rem; /* Уменьшаем размер номера */
+      margin: 0 auto; /* Центрируем номер */
+      width: 100%; /* Ширина 100%, чтобы не нарушать верстку */
+  }
+
+  .features-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* Одна колонка на мобильных */
+      grid-template-rows: auto;
+      gap: 20px; /* Увеличиваем отступы между блоками */
+      text-align: center; /* Центрируем текст */
+  }
+
+  .feature-item {
+      padding: 1.5rem; /* Увеличиваем внутренние отступы */
+      font-size: 1rem; /* Немного уменьшаем размер текста */
+      border: none; /* Убираем линии между элементами */
+  }
+
+  .features-grid::before,
+  .features-grid::after {
+      display: none; /* Убираем вертикальные и горизонтальные линии */
+  }
+
+  .feature-item h3 {
+      margin-bottom: 0.5rem; /* Добавляем отступ между заголовком и текстом */
+  }
+
+  .feature-item p {
+      margin: 0 auto; /* Центрируем абзац */
+      max-width: 90%; /* Ограничиваем ширину текста для лучшей читаемости */
+  }
+}
+
+
   </style>
 </head>
 
