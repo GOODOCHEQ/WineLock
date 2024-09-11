@@ -433,7 +433,7 @@ p.subtitle-section {
 
 .opportunity-item i {
     font-size: 2rem;
-    color: #4A90E2;
+    color: #7ba7bc;
     margin-bottom: 0.5rem;
 }
 
@@ -461,51 +461,6 @@ p.subtitle-section {
     }
 }
 
-
-/* Contacts Section */
-#contacts {
-    text-align: center;
-    padding: 2rem 0;
-    background-color: #fff;
-    margin-top: -50px;
-}
-
-.contacts-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.logo-contacts {
-    height: 100px;
-    margin-bottom: 2rem;
-}
-
-#contacts h2 {
-    font-size: 2rem;
-    color: #9cb4c4;
-    margin-bottom: 1rem;
-}
-
-#contacts p {
-    font-size: 1.2rem;
-    color: #9cb4c4;
-    margin: 0.5rem 0;
-}
-
-.social-icons {
-    margin-top: 1rem;
-}
-
-.social-icons a {
-    margin: 0 10px;
-    color: #9cb4c4;
-    font-size: 2rem;
-    transition: color 0.3s;
-}
-
-.social-icons a:hover {
-    color: #4A90E2;
-}
 
 
 /* Стили для модального окна */
@@ -764,9 +719,31 @@ p.subtitle-section {
   .gallery-item img {
     max-width: 100%; /* Ширина для изображения */
     height: auto;
-    object-fit: contain; /* Отключаем растягивание изображений */
   }
 
+  .gallery-container,
+.gallery-wrapper,
+.gallery-item {
+    margin: 0; /* Убираем отступы */
+    padding: 0; /* Убираем внутренние отступы */
+}
+
+.gallery-container {
+    width: 100%; /* Устанавливаем ширину на 100% */
+}
+
+.gallery-item {
+    width: 100%; /* Каждое изображение занимает 100% ширины контейнера */
+    padding: 0;
+    margin: 0;
+}
+
+.gallery-item img {
+    width: 100%; /* Изображение занимает 100% ширины элемента */
+    height: auto;
+    display: block;
+    object-fit: cover; /* Избегаем растягивания изображения */
+}
   .gallery-item-text {
     position: absolute;
     bottom: 10px;
@@ -905,10 +882,125 @@ p.subtitle-section {
     .opportunity-item {
     margin-bottom: 5px; 
   }
+  
+  section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .hero-section .hero-text {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .spec-item, .opportunity-item, .gallery-item {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .modal-content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
+/* Футер */
+footer {
+    background-color: #fff; /* Цвет фона для футера */
+    padding: 2rem 0;
+    border-top: 1px solid #ccc; /* Линия сверху */
+}
 
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; /* Используем flex для разделения на три части */
+    justify-content: space-between;
+    align-items: center;
+}
 
+.footer-logo {
+    flex: 1; /* Логотип будет слева */
+}
+
+.footer-logo img {
+    max-width: 150px; /* Увеличенный размер логотипа */
+    height: auto;
+}
+
+.footer-info {
+    flex: 2; /* Контакты в центре */
+    text-align: center;
+}
+
+.footer-info p {
+    font-size: 1.2rem;
+    color: #9cb4c4;
+    margin: 0.5rem 0;
+}
+
+.footer-social-icons {
+    flex: 1; /* Социальные иконки справа */
+    text-align: right;
+}
+
+.footer-social-icons a {
+    margin: 0 10px;
+    color: #9cb4c4;
+    font-size: 2rem;
+    transition: color 0.3s;
+}
+
+.footer-social-icons a:hover {
+    color: #4A90E2;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo, .footer-info, .footer-social-icons {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .footer-logo img {
+        max-width: 100px; /* Логотип меньше на мобильных */
+    }
+}
+
+/* Изменяем цвет черного текста на белый (или цвет, который соответствует фону блока) */
+body {
+    color: #7ba7bc; /* Белый цвет вместо черного */
+}
+
+header nav ul li a {
+    color: #7ba7bc; /* Белый цвет для навигации */
+}
+
+#business-opportunities h2 {
+    color: #7ba7bc; /* Белый цвет заголовка секции */
+}
+
+.opportunity-item h3 {
+    color: #7ba7bc; /* Белый цвет заголовков внутри оппортунистов */
+}
+
+.opportunity-item p {
+    color: #7ba7bc; /* Белый цвет текста описания в секции возможностей */
+}
+
+.spec-text h3, .spec-text p {
+    color: #7ba7bc; /* Белый цвет текста для технических характеристик */
+}
+
+/* Убираем стандартный черный цвет для всех других элементов, где есть черный */
+header, footer, section {
+    color: #7ba7bc; /* Белый текст по умолчанию для всех секций */
+}
 
   </style>
 </head>
@@ -1109,18 +1201,23 @@ p.subtitle-section {
     </div>
 </section>
 
-<section id="contacts">
-  <div class="contacts-container">
-    <img src="winelock_vertical.png" alt="WineLock Logo" class="logo-contacts">
-    <h2>Наши контакты</h2>
-    <p>+7(937) 753-39-38</p>
-    <p>winelock938@gmail.com</p>
-    <div class="social-icons">
+<footer id="contacts">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="winelock_rotated_90_degrees.jpg" alt="WineLock Logo" class="logo-contacts">
+    </div>
+    <div class="footer-info">
+      <p>+7(937) 753-39-38</p>
+      <p>winelock938@gmail.com</p>
+    </div>
+    <div class="footer-social-icons">
       <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
     </div>
   </div>
-</section>
+</footer>
+
+
 
   <script>
 // Получаем элементы галереи
